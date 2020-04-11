@@ -7,9 +7,7 @@
 def es_palindromo(palabra):
     a = len(palabra)
     a = (a//2) + (a%2)
-    if palabra[0:a] == palabra[::-1][0:a]:
-        return (True)
-    else:
-        return (False)
+    return palabra[0:a] == palabra[::-1][0:a]
 
 assert es_palindromo('salas') == True
+assert es_palindromo('hola') == False

@@ -9,7 +9,7 @@ def operacion(a, b, multiplicar):
         return (a*b)
     else:
         if b==0:
-            print ("Operación no valida")
+            return (print ("Operación no valida"))
         else:
             return (a/b)
 
