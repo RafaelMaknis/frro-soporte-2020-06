@@ -2,13 +2,24 @@
 # Devuelve un booleano en base a si encontro el registro y lo borro o no.
 
 import datetime
+import sqlite3
 
-from practico_03.ejercicio_01 import reset_tabla
-from practico_03.ejercicio_02 import agregar_persona
+from ejercicio_01 import reset_tabla
+from ejercicio_02 import agregar_persona
 
 
 def borrar_persona(id_persona):
-    return False
+    db = sqlite3.connect('mibase')
+    cursor = db.cursor()
+    id = (id_persona,)
+    cursor.execute('Select idPersona from Persona where IdPersona = ?', id)
+    if cursor.fetchall() == []:
+        db.close()
+        return False
+    cursor.execute('Delete from Persona where IdPersona = ?', id)
+    db.commit()
+    db.close()
+    return True
 
 
 @reset_tabla
